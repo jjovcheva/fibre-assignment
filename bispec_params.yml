@@ -5,7 +5,7 @@
 # Directories for input/output.
 directories:
   catalogues: /disk01/swang/storage/projects/DESI-Clustering/output/catalogues/FirstGenMocks/AbacusSummit/CutSky/LRG/z0.800
-  measurements: storage/output/measurements/bispec/000
+  measurements: storage/output/measurements/bk/000
   products: storage/output/products
 
 # Filenames (including extensions) for input/output sources.

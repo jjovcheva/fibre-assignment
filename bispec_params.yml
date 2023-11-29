@@ -1,0 +1,80 @@
+---
+
+# -- I/O ----------------------------------------------------------------------
+
+# Directories for input/output.
+directories:
+  catalogues: /disk01/swang/storage/projects/DESI-Clustering/output/catalogues/FirstGenMocks/AbacusSummit/CutSky/LRG/z0.800
+  measurements: storage/output/measurements/bispec/000
+  products: storage/output/products
+
+# Filenames (including extensions) for input/output sources.
+filenames:
+  data_catalogue: cutsky_LRG_z0.800_AbacusSummit_base_c000_ph013.data_rsd.fits
+  rand_catalogue: cutsky_LRG_10X.rand.fits
+
+# Tags to be substituted into input/output paths.
+tags:
+  input: ~ 
+  output: bk13
+
+
+# -- Sampling -----------------------------------------------------------------
+
+# Box size in each dimension (in Mpc/h).
+boxsize:
+  x: 6400.
+  y: 6400.
+  z: 6400.
+
+# Grid number in each dimension.
+ngrid:
+  x: 512
+  y: 512
+  z: 512
+
+# Mesh assignment scheme: {'ngp', 'cic', 'tsc'}.
+assignment: tsc
+
+# Normalisation and shot noise convention: {'particle', 'mesh'}.
+norm_convention: particle
+shotnoise_convention: mesh
+
+
+# -- Measurements -------------------------------------------------------------
+
+# Type of catalogue: {'survey', 'mock', 'sim'}.
+catalogue_type: survey
+
+# Type of measurement:
+# {'powspec', '2pcf', '2pcf-win', 'bispec', '3pcf', '3pcf-win', '3pcf-win-wa'}.
+measurement_type: bispec
+
+# Degrees of the multipoles.
+degrees:
+  ell1: 4
+  ell2: 0
+  ELL: 4
+
+# Orders of wide-angle corrections.
+wa_orders:
+  i: 0
+  j: 0
+
+# Binning scheme in configuration space:
+# {'lin', 'log', 'linpad', 'logpad', 'custom'}.
+binning: lin
+
+# Form of the three-point correlator: {'full', 'diag'}.
+form: diag
+
+# Range of scales and data vector dimension.  The scales are interpreted
+# as wavenumbers in h/Mpc in Fourier space, or separations in Mpc/h in
+# configuration space.
+range: [0.01, 0.2]  # or: [.5, 1000.5]
+dim: 20  # must be >=2; add 5 if `binning` is padded
+
+# Component index of the full three-point correlator.
+index: 0
+
+...

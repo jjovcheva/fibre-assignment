@@ -63,7 +63,7 @@ def save_uncorrected(comp, true_cap, cat, tracer, real, data):
                   (tracer, tracer, true_cap, cat, real), 'w') as f:
             np.savetxt(f, np.column_stack(data), header='x y z nz wc')
             f.close()
-    if comp == '':
+    elif comp == '':
         with open('./storage/input/catalogues/%s/%s_%s_%s_%s_incomplete' % 
                   (tracer, tracer, true_cap, cat, real), 'w') as f:
             np.savetxt(f, np.column_stack(data), header='x y z nz wc')

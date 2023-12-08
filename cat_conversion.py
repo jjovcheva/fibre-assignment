@@ -17,12 +17,18 @@ cosmo = nbodykit.lab.cosmology.Cosmology(
 def read_cat(cap, comp, cat, tracer, real):
     '''
     Read in the catalogues and cut them for the appropriate redshifts.
-
+    
+    Parameters
+    ----------
     cap: 'N' or 'S'
     comp: 'complete' or ''
     cat: 'dat' or 'ran'
     tracer: 'LRG', 'ELG' or 'QSO'
     real: realisation number
+    
+    Return 
+    ------
+    cat_data: cut catalogue
     '''
 
     base_dir = 'Y1/mock%s/LSScats' %real
@@ -50,6 +56,17 @@ def read_cat(cap, comp, cat, tracer, real):
     return cat_data
 
 def save_corrected(true_cap, cat, tracer, real, data):
+    '''
+    Save nearest neighbour corrected catalogues.
+    
+    Parameters
+    ----------
+    true_cap: 'N' or 'S' (the corrected cap)
+    cat: 'dat' or 'ran'
+    tracer: 'LRG', 'ELG' or 'QSO'
+    real: realisation number
+    data: transformed catalogue to save
+    '''
     with open('./storage/input/catalogues/%s/%s_%s_%s_%s_corrected' % 
               (tracer, tracer, true_cap, cat, real), 'w') as f:
         np.savetxt(f, np.column_stack(data), header='x y z nz ws wc')
@@ -58,12 +75,24 @@ def save_corrected(true_cap, cat, tracer, real, data):
     return
 
 def save_uncorrected(comp, true_cap, cat, tracer, real, data):
+    '''
+    Save catalogues without a correction (complete/incomplete).
+    
+    Parameters
+    ----------
+    comp: 'complete' or 'incomplete'
+    true_cap: 'N' or 'S' (the corrected cap)
+    cat: 'dat' or 'ran'
+    tracer: 'LRG', 'ELG' or 'QSO'
+    real: realisation number
+    data: transformed catalogue to save
+    '''
     if comp == 'complete':
         with open('./storage/input/catalogues/%s/%s_%s_%s_%s_complete' % 
                   (tracer, tracer, true_cap, cat, real), 'w') as f:
             np.savetxt(f, np.column_stack(data), header='x y z nz wc')
             f.close()
-    elif comp == '':
+    if comp == '':
         with open('./storage/input/catalogues/%s/%s_%s_%s_%s_incomplete' % 
                   (tracer, tracer, true_cap, cat, real), 'w') as f:
             np.savetxt(f, np.column_stack(data), header='x y z nz wc')
@@ -73,10 +102,17 @@ def save_uncorrected(comp, true_cap, cat, tracer, real, data):
 
 def sky_to_cartesian(cat_data, corr):
     '''
-    Determine Cartesian coordinates from RA, Dec.
+    Determine galaxy positions in Cartesian coordinates from RA, Dec.
+    Express data in array with Triumvirate-compatible columns.
 
-    :param: cat_data: catalogue for calculation
-    :param: corr: whether or not the catalogue is corrected for systematics
+    Parameters
+    ----------
+    cat_data: catalogue for conversion
+    corr: whether or not the catalogue is corrected for systematics
+    
+    Return
+    ------
+    data: catalogue as array with appropriate columns
     '''
     
     # Pick out RA, Dec, redshift.
@@ -117,13 +153,14 @@ def conversion(comp, cat, corr, tracer, real):
     '''
     Create Cartesian position columns and save new files to specified directory.
 
+    Parameters
+    ----------
     comp: 'complete' or ''
     cat: 'dat' or 'ran'
     corr: 'corrected' or ''
     tracer: 'LRG', 'ELG' or 'QSO'
     real: realisation number
     '''
-
     cat_n = read_cat('N', comp, cat, tracer, real)
     cat_s = read_cat('S', comp, cat, tracer, real)
 
@@ -147,5 +184,3 @@ caps = ['N', 'S']
 cats = ['dat', 'ran']
 
 conversion('complete', 'dat', '', 'LRG', '1')
-
-

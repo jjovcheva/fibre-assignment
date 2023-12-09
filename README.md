@@ -1,4 +1,4 @@
-# Investigating the impact of fibre assignments on Fourier space galaxy clustering statistics
+# Impact of fibre assignments on Fourier space galaxy clustering statistics
 
 This repository contains some of the scripts and most of the measurements generated during my master's thesis
 at the University of Edinburgh, which aimed to quantify and analyse the impact of fibre assignments and the 

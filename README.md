@@ -8,8 +8,8 @@ efficacy of the nearest neighbour correction on the galaxy power spectrum and bi
 used to calculate the power spectra and bispectra (https://triumvirate.readthedocs.io/en/latest/index.html).
 
 Shell files, draft scripts, and incomplete scripts (e.g. ones used to improve on the nearest neighbour correction
-by reconstructing the galaxy distribution from line-of-sight displacements as described in 
-https://doi.org/10.48550/arXiv.1609.01714) have been omitted for now.
+by modelling the distribution of the line of sight displacements between resolved galaxies and statistically
+reconstructing the clustering, as described in https://doi.org/10.48550/arXiv.1609.01714) have been omitted for now.
 
 
 

@@ -4,7 +4,7 @@ This repository contains some of the scripts and most of the measurements genera
 at the University of Edinburgh, which aimed to quantify and analyse the impact of fibre assignments and the 
 efficacy of the nearest neighbour correction on the galaxy power spectrum and bispectrum.
 
-`cat_conversion.py` converts fits catalogues to a format that is compatible with Triumvirate, the estimator
+`cat_conversion.py` converts FITS catalogues to a format that is compatible with Triumvirate, the estimator
 used to calculate the power spectra and bispectra (https://triumvirate.readthedocs.io/en/latest/index.html).
 
 Shell files, draft scripts, and incomplete scripts (e.g. ones used to improve on the nearest neighbour correction

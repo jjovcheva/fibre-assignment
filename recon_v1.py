@@ -108,8 +108,8 @@ def calc_dlos(redshift):
     d_los: line-of-sight displacements
     '''
     n = len(redshift)
-    print(n)
-    # Check if redshift array is empty
+    
+    # Check if redshift array is empty (useful if data format changes).
     if n == 0:
         raise ValueError("Input redshift array is empty.")
     
